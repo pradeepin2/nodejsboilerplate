@@ -10,13 +10,14 @@ var express = require("express"), app = express(), port = parseInt(
  * needed for parsing the request parameters sent in the body of request
  */
 app.use(express.bodyParser());
-
 //default redirect url
 app.get("/", function(req, res) {
     console.log("inside app redirection");
-    res.redirect("/index.html");
+    res.sendfile(__dirname+"/index.html");
+	console.log("after app redirection");
 });
 
+app.use(express.bodyParser());
 //default redirection  of any other static urls (/test)
 app.get("/test", function(req, res) {
     console.log("inside test  redirection");
